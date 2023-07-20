@@ -1,3 +1,57 @@
 <resources>
     <string name="app_name">TestCompose</string>
+
+    <string name="paragon_cost">250200</string>
+    <string name="salvation_cost">202500</string>
+    <string name="emissary_cost">73200</string>
+    <string name="czar_cost">45500</string>
+    <string name="colossus_cost">27500</string>
+    <string name="tempest_cost">22000</string>
+
+    <string name="mavor_cost">224775</string>
+    <string name="duke_cost">72000</string>
+    <string name="novax_cost">36000</string>
+    <string name="fatboy_cost">28000</string>
+    <string name="atlantis_cost">12000</string>
+
+    <string name="scathis_cost">220000</string>
+    <string name="disruptor_cost">69600</string>
+    <string name="megalith_cost">37500</string>
+    <string name="soulripper_cost">34000</string>
+    <string name="monkeylord_cost">20000</string>
+
+    <string name="yolonaoss_cost">187650</string>
+    <string name="hovatham_cost">78000</string>
+    <string name="ahwassa_cost">48000</string>
+    <string name="ythotha_cost">26500</string>
+
+    <string name="paragon">Paragon</string>
+    <string name="salvation">Salvation</string>
+    <string name="emissary">Emissary</string>
+    <string name="czar">Czar</string>
+    <string name="colossus">Colossus</string>
+    <string name="tempest">Tempest</string>
+
+    <string name="mavor">Mavor</string>
+    <string name="duke">Duke</string>
+    <string name="novax">Novax</string>
+    <string name="fatboy">Fatboy</string>
+    <string name="atlantis">Atlantis</string>
+
+    <string name="scathis">Scathis</string>
+    <string name="disruptor">Disruptor</string>
+    <string name="megalith">Megalith</string>
+    <string name="soulripper">Soulripper</string>
+    <string name="monkeylord">Monkeylord</string>
+
+    <string name="yolonaoss">Yolonaoss</string>
+    <string name="hovatham">Hovatham</string>
+    <string name="ahwassa">Ahwassa</string>
+    <string name="ythotha">Ythotha</string>
+
+    <string name="aeon">aeon</string>
+    <string name="uef">uef</string>
+    <string name="cybran">cybran</string>
+    <string name="seraphim">seraphim</string>
+    <string name="unknown_faction">unknown</string>
 </resources>

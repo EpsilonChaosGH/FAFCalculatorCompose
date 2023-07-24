@@ -1,8 +1,9 @@
-package com.example.testcompose
+package com.example.testcompose.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.Color
+import com.example.testcompose.R
 import com.example.testcompose.ui.theme.BlueUef
 import com.example.testcompose.ui.theme.GreenAeon
 import com.example.testcompose.ui.theme.RedCybran
@@ -12,7 +13,7 @@ enum class ExpState(
     @DrawableRes val iconResId: Int,
     @StringRes val costResId: Int,
     @StringRes val titleResId: Int,
-    @StringRes val factionColor: Color
+    val factionColor: Color
 ) {
     COST_250200(R.drawable.paragon, R.string.paragon_cost, R.string.paragon, GreenAeon),
     COST_202500(R.drawable.salvation, R.string.salvation_cost, R.string.salvation, GreenAeon),

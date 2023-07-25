@@ -1,6 +1,5 @@
 package com.example.testcompose.ui.main
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,8 +14,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import com.example.testcompose.model.MassCostState
 import com.example.testcompose.model.Params
 import com.example.testcompose.model.ResultState
 import com.example.testcompose.ui.theme.RedCybran
@@ -24,6 +22,7 @@ import com.example.testcompose.ui.theme.RedCybran
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
+    mainViewModel: MainViewModel,
     onNavigateToExp: () -> Unit
 ) {
 //    list: List<ResultState>, params: Params, navController: NavController
@@ -36,29 +35,12 @@ fun MainScreen(
             it == 15
         )
     }
-    val params = Params(
-        massCost = 15000,
-        massIncome = 200
-    )
-    val massCost = remember {
-        mutableStateOf(params.massCost)
-    }
-
-    val massIncome = remember {
-        mutableStateOf(params.massIncome)
-    }
 
     Scaffold(
         bottomBar = {
             ParamsBottomBar(
-                massCost = massCost,
-                onMassCostValueChange = {
-                    massCost.value = it.toInt()
-                },
-                massIncome = massIncome,
-                onMassIncomeValueChange = {
-                    massIncome.value = it.toInt()
-                },
+                massCostState = MassCostState("220000"),
+                massIncomeState = MassCostState("150"),
                 onNavigateToExp = onNavigateToExp
             )
 

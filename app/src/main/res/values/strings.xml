@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">TestCompose</string>
 
+
+    <string name="mass">MASS</string>
+    <string name="income">INCOME</string>
+
     <string name="paragon_cost">250200</string>
     <string name="salvation_cost">202500</string>
     <string name="emissary_cost">73200</string>

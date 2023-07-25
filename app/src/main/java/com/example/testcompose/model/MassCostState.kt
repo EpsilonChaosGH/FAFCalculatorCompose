@@ -1,0 +1,30 @@
+package com.example.testcompose.model
+
+import java.lang.Exception
+
+
+class MassCostState(val massCost: String? = null) :
+    TextFieldState(validator = ::isMassCostValid, errorFor = ::massCostValidationError) {
+    init {
+        massCost?.let {
+            text = it
+        }
+    }
+}
+
+/**
+ * Returns an error to be displayed or null if no error was found
+ */
+private fun massCostValidationError(): String {
+    return "Invalid mass cost"
+}
+
+private fun isMassCostValid(massCost: String): Boolean {
+    return try {
+        return massCost.toInt() > 0
+    } catch (e: Exception){
+        false
+    }
+}
+
+val MassCostStateSaver = textFieldStateSaver(MassCostState())

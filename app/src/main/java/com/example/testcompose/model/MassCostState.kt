@@ -3,7 +3,7 @@ package com.example.testcompose.model
 import java.lang.Exception
 
 
-class MassCostState(val massCost: String? = null) :
+class MassCostState(val massCost: String? = "0") :
     TextFieldState(validator = ::isMassCostValid, errorFor = ::massCostValidationError) {
     init {
         massCost?.let {
@@ -21,10 +21,8 @@ private fun massCostValidationError(): String {
 
 private fun isMassCostValid(massCost: String): Boolean {
     return try {
-        return massCost.toInt() > 0
+        return massCost.toInt() >= 0
     } catch (e: Exception){
         false
     }
 }
-
-val MassCostStateSaver = textFieldStateSaver(MassCostState())

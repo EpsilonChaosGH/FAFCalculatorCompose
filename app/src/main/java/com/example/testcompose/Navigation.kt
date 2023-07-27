@@ -10,6 +10,7 @@ import com.example.testcompose.Destinations.EXP_ROUTE
 import com.example.testcompose.Destinations.MAIN_ROUTE
 import com.example.testcompose.ui.exp.ExpScreen
 import com.example.testcompose.ui.main.MainScreen
+import com.example.testcompose.ui.test.TestScreen
 
 object Destinations {
     const val MAIN_ROUTE = "main"
@@ -25,11 +26,10 @@ fun MainNavHost(
         startDestination = MAIN_ROUTE,
     ) {
         composable(MAIN_ROUTE) {
+//            TestScreen()
             MainScreen(
                 mainViewModel = hiltViewModel(),
-                onNavigateToExp = {
-                    navController.navigate("exp")
-                }
+                navController = navController
             )
         }
 

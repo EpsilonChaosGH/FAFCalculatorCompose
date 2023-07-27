@@ -1,6 +1,6 @@
 package com.example.testcompose.model
 
-data class Result(
+data class ResultEntity(
     val sacu: Int,
     val massIncome: Int,
     val time: Int,

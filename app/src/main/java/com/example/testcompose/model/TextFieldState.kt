@@ -9,28 +9,12 @@ open class TextFieldState(
     private val validator: (String) -> Boolean = { true },
     private val errorFor: () -> String = { "" }
 ) {
-    var text: String by mutableStateOf("")
-    // was the TextField ever focused
-    var isFocusedDirty: Boolean by mutableStateOf(false)
-    var isFocused: Boolean by mutableStateOf(false)
-    private var displayErrors: Boolean by mutableStateOf(false)
+    var text: String by mutableStateOf("0")
 
     open val isValid: Boolean
         get() = validator(text)
 
-    fun onFocusChange(focused: Boolean) {
-        isFocused = focused
-        if (focused) isFocusedDirty = true
-    }
-
-    fun enableShowErrors() {
-        // only show errors if the text was at least once focused
-        if (isFocusedDirty) {
-            displayErrors = true
-        }
-    }
-
-    fun showErrors() = !isValid && displayErrors
+    fun showErrors() = !isValid
 
     open fun getError(): String? {
         return if (showErrors()) {
@@ -40,13 +24,3 @@ open class TextFieldState(
         }
     }
 }
-
-fun textFieldStateSaver(state: TextFieldState) = listSaver<TextFieldState, Any>(
-    save = { listOf(it.text, it.isFocusedDirty) },
-    restore = {
-        state.apply {
-            text = it[0] as String
-            isFocusedDirty = it[1] as Boolean
-        }
-    }
-)

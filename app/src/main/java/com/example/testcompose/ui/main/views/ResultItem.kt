@@ -1,4 +1,4 @@
-package com.example.testcompose.ui.main
+package com.example.testcompose.ui.main.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

@@ -3,7 +3,14 @@
 
 
     <string name="mass">MASS</string>
+    <string name="mass_cost">MASS COST</string>
     <string name="income">INCOME</string>
+    <string name="_5320">5320</string>
+    <string name="_6450">6450</string>
+    <string name="sacu_cost">SACU COST</string>
+    <string name="sacu_cost_details">The cost of a resources sacu created with a quantum gateway surrounded by t2 mass fabricators and without</string>
+    <string name="with_fabricators">Quantum gateway surrounded by t2 mass fabricators</string>
+    <string name="without_fabricators">Quantum gateway</string>
 
     <string name="paragon_cost">250200</string>
     <string name="salvation_cost">202500</string>

@@ -51,7 +51,7 @@ fun ParamsBottomBar(
     )
     {
         TextFieldTest(
-            nameId = R.string.mass,
+            nameId = R.string.mass_cost,
             modifier = Modifier
                 .weight(0.4f)
                 .padding(4.dp),

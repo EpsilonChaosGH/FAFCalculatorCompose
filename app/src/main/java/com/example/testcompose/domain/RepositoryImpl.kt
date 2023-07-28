@@ -3,14 +3,14 @@ package com.example.testcompose.domain
 
 import com.example.testcompose.domain.mappers.toConfig
 import com.example.testcompose.data.AppDatabase
-import com.example.testcompose.data.entity.UpdateCostTuple
 import com.example.testcompose.data.entity.UpdateParamsTuple
-import com.example.testcompose.data.entity.UpdateSettingsTuple
+import com.example.testcompose.domain.mappers.toConfigDbEntity
+import com.example.testcompose.domain.mappers.toResultState
 import com.example.testcompose.model.Config
 import com.example.testcompose.model.Const
 import com.example.testcompose.model.Params
 import com.example.testcompose.model.ResultEntity
-import com.example.testcompose.model.Settings
+import com.example.testcompose.ui.main.models.MainViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -23,20 +23,15 @@ import javax.inject.Singleton
 class RepositoryImpl @Inject constructor(
     private val appDatabase: AppDatabase,
 ) : Repository {
-    override suspend fun getResultFlow(): Flow<List<ResultEntity>> {
+    override suspend fun getResultFlow(): Flow<MainViewState.Display> {
         return appDatabase.configDao().getConfigFlow(Const.KEY_CONFIG).map {
-            getResult(it.toConfig())
+            val config = it.toConfig()
+            val result = getResult(config).map { it.toResultState() }
+            MainViewState.Display(result, config)
         }
     }
 
-    override suspend fun getConfigFlow(): Flow<Config> {
-        return appDatabase.configDao().getConfigFlow(Const.KEY_CONFIG).map {
-            it.toConfig()
-        }
-    }
-
-    override suspend fun setCurrentParams(params: Params) {
-        delay(1000)
+    override suspend fun setParams(params: Params) {
         appDatabase.configDao().updateParams(
             UpdateParamsTuple(
                 keyConfig = Const.KEY_CONFIG,
@@ -46,24 +41,12 @@ class RepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun setCurrentSettings(settings: Settings) = withContext(Dispatchers.IO) {
-        appDatabase.configDao().updateSettings(
-            UpdateSettingsTuple(
-                keyConfig = Const.KEY_CONFIG,
-                sacuIncome = settings.sacuIncome,
-                sacuCost = settings.sacuCost,
-                secMax = settings.secMax
-            )
-        )
+    override suspend fun setConfig(config: Config) = withContext(Dispatchers.Default) {
+        appDatabase.configDao().insertConfig(config.toConfigDbEntity())
     }
 
-    override suspend fun setCost(cost: Int) {
-        appDatabase.configDao().updateCost(
-            UpdateCostTuple(
-                keyConfig = Const.KEY_CONFIG,
-                massCost = cost
-            )
-        )
+    override suspend fun getConfigFlow(): Flow<Config> {
+        return appDatabase.configDao().getConfigFlow(Const.KEY_CONFIG).map { it.toConfig() }
     }
 
     private fun getResult(config: Config): List<ResultEntity> {

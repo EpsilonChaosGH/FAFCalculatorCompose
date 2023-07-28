@@ -44,6 +44,7 @@ import com.example.testcompose.ui.theme.RedCybran
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun MainViewDisplay(
+    modifier: Modifier,
     massCostTextFieldState: MutableState<Int> = remember { mutableStateOf(0) },
     massIncomeTextFieldState: MutableState<Int> = remember { mutableStateOf(0) },
     onMassCostImeAction: (Int) -> Unit = {},
@@ -53,7 +54,7 @@ fun MainViewDisplay(
 ) {
 
 
-    Scaffold(
+    Scaffold(modifier = modifier,
         bottomBar = {
             Row(
                 horizontalArrangement = Arrangement.Center,
@@ -64,30 +65,19 @@ fun MainViewDisplay(
             )
             {
                 NumberFieldTest(
-                    nameId = R.string.mass,
+                    nameId = R.string.mass_cost,
                     modifier = Modifier
-                        .weight(0.4f)
+                        .weight(0.5f)
                         .padding(4.dp),
                     numbersTextFieldState = massCostTextFieldState,
                     imeAction = onMassCostImeAction
 
                 )
 
-                Image(
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .weight(0.2f)
-                        .height(56.dp)
-                        .clickable {
-                            navController.navigate("Exp")
-                        },
-                    painter = painterResource(id = R.drawable.ahwassa), contentDescription = "Image"
-                )
-
                 NumberFieldTest(
                     nameId = R.string.income,
                     modifier = Modifier
-                        .weight(0.4f)
+                        .weight(0.5f)
                         .padding(4.dp),
                     numbersTextFieldState = massIncomeTextFieldState,
                     imeAction = onMassIncomeImeAction
@@ -123,7 +113,6 @@ fun NumberFieldTest(
     imeAction: (Int) -> Unit
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
-
     OutlinedTextField(
         value = numbersTextFieldState.value.toString(),
         onValueChange = { value ->

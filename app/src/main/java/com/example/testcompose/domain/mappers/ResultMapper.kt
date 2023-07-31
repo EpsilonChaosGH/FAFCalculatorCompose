@@ -1,7 +1,7 @@
 package com.example.testcompose.domain.mappers
 
-import com.example.testcompose.model.ResultEntity
-import com.example.testcompose.model.ResultState
+import com.example.testcompose.domain.model.ResultEntity
+import com.example.testcompose.domain.model.ResultState
 import java.text.SimpleDateFormat
 import java.util.Locale
 

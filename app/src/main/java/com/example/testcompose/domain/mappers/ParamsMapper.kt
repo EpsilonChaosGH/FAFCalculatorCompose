@@ -1,8 +1,8 @@
 package com.example.testcompose.domain.mappers
 
-import com.example.testcompose.model.Config
+import com.example.testcompose.domain.model.Config
 import com.example.testcompose.data.entity.ConfigDbEntity
-import com.example.testcompose.model.Const
+import com.example.testcompose.utils.Const
 
 fun ConfigDbEntity.toConfig(): Config = Config(
     massCost = massCost,

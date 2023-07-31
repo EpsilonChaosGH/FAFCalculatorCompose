@@ -12,6 +12,10 @@
     <string name="with_fabricators">Quantum gateway surrounded by t2 mass fabricators</string>
     <string name="without_fabricators">Quantum gateway</string>
 
+    <string name="main">MAIN</string>
+    <string name="exp">EXP</string>
+    <string name="settings">SETTINGS</string>
+
     <string name="paragon_cost">250200</string>
     <string name="salvation_cost">202500</string>
     <string name="emissary_cost">73200</string>

@@ -3,16 +3,16 @@ package com.example.testcompose.domain
 
 import com.example.testcompose.domain.mappers.toConfig
 import com.example.testcompose.data.AppDatabase
+import com.example.testcompose.data.entity.UpdateCostTuple
 import com.example.testcompose.data.entity.UpdateParamsTuple
 import com.example.testcompose.domain.mappers.toConfigDbEntity
 import com.example.testcompose.domain.mappers.toResultState
-import com.example.testcompose.model.Config
-import com.example.testcompose.model.Const
-import com.example.testcompose.model.Params
-import com.example.testcompose.model.ResultEntity
-import com.example.testcompose.ui.main.models.MainViewState
+import com.example.testcompose.domain.model.Config
+import com.example.testcompose.utils.Const
+import com.example.testcompose.domain.model.Params
+import com.example.testcompose.domain.model.ResultEntity
+import com.example.testcompose.ui.screens.main.models.MainViewState
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
@@ -43,6 +43,10 @@ class RepositoryImpl @Inject constructor(
 
     override suspend fun setConfig(config: Config) = withContext(Dispatchers.Default) {
         appDatabase.configDao().insertConfig(config.toConfigDbEntity())
+    }
+
+    override suspend fun setMassCost(massCost: Int) {
+        appDatabase.configDao().updateCost(UpdateCostTuple(Const.KEY_CONFIG, massCost))
     }
 
     override suspend fun getConfigFlow(): Flow<Config> {

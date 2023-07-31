@@ -3,7 +3,7 @@ package com.example.testcompose.data.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.testcompose.model.SacuCost
+import com.example.testcompose.domain.model.SacuCost
 
 @Entity(tableName = "config")
 data class ConfigDbEntity(

@@ -1,7 +1,7 @@
 package com.example.testcompose.data.entity
 
 import androidx.room.TypeConverter
-import com.example.testcompose.model.SacuCost
+import com.example.testcompose.domain.model.SacuCost
 
 class SacuCostConverter {
 

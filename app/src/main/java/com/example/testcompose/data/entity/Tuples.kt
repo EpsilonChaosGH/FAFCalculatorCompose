@@ -2,7 +2,7 @@ package com.example.testcompose.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
-import com.example.testcompose.model.SacuCost
+import com.example.testcompose.domain.model.SacuCost
 
 
 data class UpdateParamsTuple(

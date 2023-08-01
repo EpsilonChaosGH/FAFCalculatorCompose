@@ -23,21 +23,14 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            listenCurrentState()
+            listenState()
         }
     }
 
     override fun obtainEvent(event: MainEvent) {
         when (val state = mainViewState.value) {
-            is MainViewState.Loading -> reduce(event, state)
+            is MainViewState.Loading -> {}
             is MainViewState.Display -> reduce(event, state)
-        }
-    }
-
-    private fun reduce(event: MainEvent, currentState: MainViewState.Loading) {
-        when (event) {
-            MainEvent.EnterScreen -> {}
-            else -> {}
         }
     }
 
@@ -58,12 +51,10 @@ class MainViewModel @Inject constructor(
                         massIncome = event.massIncome
                     )
                 )
-
-            else -> {}
         }
     }
 
-    private suspend fun listenCurrentState() {
+    private suspend fun listenState() {
         repository.getResultFlow().collect { results ->
             _mainViewState.value = results
         }

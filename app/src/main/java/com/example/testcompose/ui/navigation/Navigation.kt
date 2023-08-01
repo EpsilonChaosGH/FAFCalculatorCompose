@@ -75,8 +75,7 @@ fun MainNavHost(
             composable(MAIN_ROUTE) {
                 MainScreen(
                     modifier = Modifier.padding(paddingValues),
-                    mainViewModel = hiltViewModel(),
-                    navController = navController
+                    mainViewModel = hiltViewModel()
                 )
             }
 

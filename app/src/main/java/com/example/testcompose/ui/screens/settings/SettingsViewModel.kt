@@ -24,27 +24,20 @@ class SettingsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            listenCurrentConfig()
+            listenConfig()
         }
     }
 
     override fun obtainEvent(event: SettingsEvent) {
         when (val state = settingsViewState.value) {
-            is SettingsViewState.Loading -> reduce(event, state)
+            is SettingsViewState.Loading -> {}
             is SettingsViewState.Display -> reduce(event, state)
-        }
-    }
-
-    private fun reduce(event: SettingsEvent, currentState: SettingsViewState.Loading) {
-        when (event) {
-            SettingsEvent.EnterScreen -> {}
-            else -> {}
         }
     }
 
     private fun reduce(event: SettingsEvent, currentState: SettingsViewState.Display) {
         when (event) {
-            is SettingsEvent.OnSacuCostChanged -> setCurrentConfig(
+            is SettingsEvent.OnSacuCostChanged -> setConfig(
                 currentState.config.copy(
                     sacuCost = event.sacuCost
                 )
@@ -54,19 +47,18 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    private fun setCurrentConfig(config: Config) {
+    private fun setConfig(config: Config) {
         viewModelScope.launch {
             repository.setConfig(config)
         }
     }
 
-    private fun listenCurrentConfig() {
+    private fun listenConfig() {
         viewModelScope.launch {
             repository.getConfigFlow().collect() {
-                Log.e("QWERTY11222", it.sacuCost.mass.toString())
+                Log.e("QWERTY  VM", it.sacuCost.mass.toString())
                 _settingsViewState.value = SettingsViewState.Display(it)
             }
         }
     }
-
 }

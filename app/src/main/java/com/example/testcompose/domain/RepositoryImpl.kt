@@ -53,6 +53,10 @@ class RepositoryImpl @Inject constructor(
         return appDatabase.configDao().getConfigFlow(Const.KEY_CONFIG).map { it.toConfig() }
     }
 
+    override suspend fun getConfig(): Config  = withContext(Dispatchers.Default){
+         appDatabase.configDao().getConfig(Const.KEY_CONFIG).toConfig()
+    }
+
     private fun getResult(config: Config): List<ResultEntity> {
 
         val resultList: MutableList<ResultEntity> = ArrayList()
@@ -67,6 +71,7 @@ class RepositoryImpl @Inject constructor(
         var bestResultIndex = 0
 
         fun currentTime(): Int {
+            if (massIncome <= 0) massIncome = 1
             return sec + (massCost / massIncome)
         }
 

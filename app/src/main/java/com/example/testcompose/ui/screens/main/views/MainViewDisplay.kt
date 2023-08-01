@@ -1,16 +1,12 @@
 package com.example.testcompose.ui.screens.main.views
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -22,23 +18,17 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.testcompose.R
 import com.example.testcompose.domain.model.ResultState
-import com.example.testcompose.ui.screens.main.views.ResultItemTitle
+import com.example.testcompose.ui.screens.main.models.MainViewState
 import com.example.testcompose.ui.theme.BlueUef
 import com.example.testcompose.ui.theme.RedCybran
 
@@ -46,11 +36,9 @@ import com.example.testcompose.ui.theme.RedCybran
 @Composable
 fun MainViewDisplay(
     modifier: Modifier,
-    massCostTextFieldState: MutableState<Int> = remember { mutableStateOf(0) },
-    massIncomeTextFieldState: MutableState<Int> = remember { mutableStateOf(0) },
+    viewState: MainViewState.Display,
     onMassCostImeAction: (Int) -> Unit = {},
     onMassIncomeImeAction: (Int) -> Unit = {},
-    navController: NavController = rememberNavController(),
     resultList: List<ResultState> = emptyList()
 ) {
 
@@ -69,9 +57,8 @@ fun MainViewDisplay(
                     modifier = Modifier
                         .weight(0.5f)
                         .padding(4.dp),
-                    numbersTextFieldState = massCostTextFieldState,
+                    numbersFieldValue = viewState.config.massCost,
                     imeAction = onMassCostImeAction
-
                 )
 
                 NumberFieldTest(
@@ -79,9 +66,8 @@ fun MainViewDisplay(
                     modifier = Modifier
                         .weight(0.5f)
                         .padding(4.dp),
-                    numbersTextFieldState = massIncomeTextFieldState,
+                    numbersFieldValue = viewState.config.massIncome,
                     imeAction = onMassIncomeImeAction
-
                 )
             }
         }
@@ -109,21 +95,18 @@ fun MainViewDisplay(
 fun NumberFieldTest(
     nameId: Int,
     modifier: Modifier = Modifier,
-    numbersTextFieldState: MutableState<Int> = remember { mutableStateOf(0) },
+    numbersFieldValue: Int,
     imeAction: (Int) -> Unit
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
     OutlinedTextField(
-        value = numbersTextFieldState.value.toString(),
+        value = numbersFieldValue.toString(),
         onValueChange = { value ->
             if (value.length > 9) return@OutlinedTextField
             if (value.isEmpty()) {
-                numbersTextFieldState.value = 0
-                imeAction(0)
+                imeAction(1)
             } else {
-                val number = value.filter { it.isDigit() }.toInt()
-                numbersTextFieldState.value = number
-                imeAction(number)
+                imeAction(value.filter { it.isDigit() }.toInt())
             }
         },
         label = {

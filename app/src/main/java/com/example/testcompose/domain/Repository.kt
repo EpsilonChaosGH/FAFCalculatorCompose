@@ -11,6 +11,8 @@ interface Repository {
 
     suspend fun getConfigFlow(): Flow<Config>
 
+    suspend fun getConfig(): Config
+
     suspend fun setConfig(config: Config)
 
     suspend fun setMassCost(massCost: Int)

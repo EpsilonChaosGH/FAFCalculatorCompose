@@ -29,7 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.testcompose.R
 import com.example.testcompose.ui.screens.exp.models.ExpState
 import com.example.testcompose.ui.navigation.Route.MAIN_ROUTE
-import com.example.testcompose.ui.theme.Gray
+import com.example.testcompose.ui.theme.GrayG
 import com.example.testcompose.ui.theme.ToxicGreen
 
 @Composable
@@ -70,7 +70,7 @@ fun ExpItem(exp: ExpState, navController: NavController, onMassCostClicked: (Int
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .background(Gray)
+                    .background(GrayG)
             ) {
                 Image(
                     painter = painterResource(R.drawable.mass_icon),

@@ -5,6 +5,7 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +26,7 @@ import com.example.testcompose.ui.navigation.Route.EXP_ROUTE
 import com.example.testcompose.ui.navigation.Route.MAIN_ROUTE
 import com.example.testcompose.ui.navigation.Route.SETTINGS_ROUTE
 import com.example.testcompose.ui.screens.settings.SettingsScreen
+import com.example.testcompose.ui.theme.AppTheme
 import kotlinx.parcelize.Parcelize
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +37,9 @@ fun MainNavHost(
 
     Scaffold(
         bottomBar = {
-            BottomNavigation {
+            BottomNavigation(
+                backgroundColor = AppTheme.colors.secondaryBackground
+            ) {
                 val backStackEntry by navController.currentBackStackEntryAsState()
                 val currentRoute = backStackEntry?.destination?.route
 
@@ -52,17 +56,19 @@ fun MainNavHost(
                         },
                         icon = {
                             Icon(
+                                tint = AppTheme.colors.secondaryIconColor,
                                 imageVector = it.selectedIcon,
                                 contentDescription = stringResource(id = it.iconTextId)
                             )
                         },
                         label = {
-                            Text(
+                            Text(color = AppTheme.colors.secondaryTextColor,
                                 text = stringResource(id = it.iconTextId),
-                                fontSize = 9.sp,
+                                fontSize = 12.sp,
                             )
-                        }, selectedContentColor = Color.White,
-                        unselectedContentColor = Color.Black
+                        },
+//                        selectedContentColor = Color.White,
+//                        unselectedContentColor = Color.Black
                     )
                 }
             }

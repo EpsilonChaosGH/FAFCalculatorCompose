@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testcompose.R
 import com.example.testcompose.domain.model.ResultState
+import com.example.testcompose.ui.theme.AppTheme
 import com.example.testcompose.ui.theme.GreenAeon
 import com.example.testcompose.ui.theme.RedCybran
 
@@ -32,7 +34,7 @@ fun ResultItem(result: ResultState) {
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.background(
             if (result.best) GreenAeon
-            else MaterialTheme.colorScheme.background
+            else AppTheme.colors.primaryBackground
         )
     ) {
         Row(modifier = Modifier.weight(0.33f), verticalAlignment = Alignment.CenterVertically) {
@@ -43,9 +45,8 @@ fun ResultItem(result: ResultState) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = result.sacu,
-                color = Color.Black,
-                fontWeight = FontWeight.Bold,
-                fontSize = 14.sp,
+                color = AppTheme.colors.primaryTextColor,
+                fontSize = 15.sp,
                 textAlign = TextAlign.Center,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -60,9 +61,8 @@ fun ResultItem(result: ResultState) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = result.massIncome,
-                color = Color.Black,
-                fontWeight = FontWeight.Bold,
-                fontSize = 14.sp,
+                color = AppTheme.colors.primaryTextColor,
+                fontSize = 15.sp,
                 textAlign = TextAlign.Center,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -83,9 +83,8 @@ fun ResultItem(result: ResultState) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = result.time,
-                color = Color.Black,
-                fontWeight = FontWeight.Bold,
-                fontSize = 14.sp,
+                color = AppTheme.colors.primaryTextColor,
+                fontSize = 15.sp,
                 textAlign = TextAlign.Center,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -100,13 +99,13 @@ fun ResultItemTitle() {
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .background(RedCybran)
+            .background(MaterialTheme.colorScheme.secondary)
             .padding(4.dp)
     ) {
         Text(
             modifier = Modifier.weight(0.33f),
             text = "SACU",
-            color = Color.Black,
+            color = AppTheme.colors.primaryTextColor,
             fontWeight = FontWeight.Bold,
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
@@ -114,7 +113,7 @@ fun ResultItemTitle() {
         Text(
             modifier = Modifier.weight(0.34f),
             text = "INCOME",
-            color = Color.Black,
+            color = AppTheme.colors.primaryTextColor,
             fontWeight = FontWeight.Bold,
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
@@ -122,7 +121,7 @@ fun ResultItemTitle() {
         Text(
             modifier = Modifier.weight(0.33f),
             text = "TIME",
-            color = Color.Black,
+            color = AppTheme.colors.primaryTextColor,
             fontWeight = FontWeight.Bold,
             fontSize = 16.sp,
             textAlign = TextAlign.Center,

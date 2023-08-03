@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.example.testcompose.ui.navigation.MainNavHost
-import com.example.testcompose.ui.theme.TestComposeTheme
+import com.example.testcompose.ui.theme.FafCalculatorComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            TestComposeTheme {
+            FafCalculatorComposeTheme() {
                 MainNavHost()
             }
         }

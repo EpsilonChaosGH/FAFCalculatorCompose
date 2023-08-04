@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TestCompose"
+rootProject.name = "FAFCalculatorCompose"
 include(":app")
  

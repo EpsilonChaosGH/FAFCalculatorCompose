@@ -4,10 +4,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -27,7 +26,6 @@ import com.example.testcompose.ui.navigation.Route.MAIN_ROUTE
 import com.example.testcompose.ui.navigation.Route.SETTINGS_ROUTE
 import com.example.testcompose.ui.screens.settings.SettingsScreen
 import com.example.testcompose.ui.theme.AppTheme
-import kotlinx.parcelize.Parcelize
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -67,8 +65,8 @@ fun MainNavHost(
                                 fontSize = 12.sp,
                             )
                         },
-//                        selectedContentColor = Color.White,
-//                        unselectedContentColor = Color.Black
+                        selectedContentColor = Color.White,
+                        unselectedContentColor = Color.Black
                     )
                 }
             }

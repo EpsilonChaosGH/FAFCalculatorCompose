@@ -5,12 +5,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 @Composable
 fun FafCalculatorComposeTheme(
     content: @Composable () -> Unit
 ) {
+    rememberSystemUiController().setSystemBarsColor(color = Gray)
+
     CompositionLocalProvider(
         LocalColorProvider provides darkPalette,
         content = content

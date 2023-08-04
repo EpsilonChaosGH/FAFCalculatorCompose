@@ -99,7 +99,7 @@ fun ResultItemTitle() {
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .background(MaterialTheme.colorScheme.secondary)
+            .background(AppTheme.colors.secondaryBackground)
             .padding(4.dp)
     ) {
         Text(

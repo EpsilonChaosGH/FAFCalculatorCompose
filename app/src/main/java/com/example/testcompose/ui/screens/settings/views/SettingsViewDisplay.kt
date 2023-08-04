@@ -16,6 +16,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonColors
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,6 +33,7 @@ import com.example.testcompose.R
 import com.example.testcompose.domain.model.Config
 import com.example.testcompose.domain.model.SacuCost
 import com.example.testcompose.ui.screens.settings.models.SettingsViewState
+import com.example.testcompose.ui.theme.AppTheme
 
 @Composable
 fun SettingsViewDisplay(
@@ -41,14 +44,15 @@ fun SettingsViewDisplay(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(AppTheme.colors.primaryBackground)
             .padding(12.dp)
-            .background(MaterialTheme.colorScheme.background)
     ) {
         Text(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(12.dp),
-            text = stringResource(id = R.string.sacu_cost)
+            text = stringResource(id = R.string.sacu_cost),
+            color = AppTheme.colors.primaryTextColor
         )
         Column(
             Modifier
@@ -63,6 +67,10 @@ fun SettingsViewDisplay(
                 RadioButton(
                     selected = viewState.config.sacuCost == SacuCost.MASS_5320,
                     onClick = { onSacuCostChanged(SacuCost.MASS_5320) },
+                    colors = RadioButtonDefaults.colors(
+                        selectedColor = AppTheme.colors.primaryIconColor,
+                        unselectedColor = AppTheme.colors.secondaryIconColor
+                    )
                 )
                 Image(
                     modifier = Modifier
@@ -79,12 +87,13 @@ fun SettingsViewDisplay(
                 )
                 Spacer(modifier = Modifier.size(14.dp))
                 Column {
-                    Text(stringResource(id = R.string._5320), fontSize = 18.sp)
+                    Text(stringResource(id = R.string._5320), fontSize = 18.sp,color = AppTheme.colors.primaryTextColor)
                     Text(
-                        stringResource(id = R.string.with_fabricators),
+                        stringResource(id = R.string.with_fabricators,),
                         fontSize = 12.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
+                        color = AppTheme.colors.primaryTextColor
                     )
                 }
             }
@@ -95,6 +104,10 @@ fun SettingsViewDisplay(
                 RadioButton(
                     selected = viewState.config.sacuCost == SacuCost.MASS_6450,
                     onClick = { onSacuCostChanged(SacuCost.MASS_6450) },
+                    colors = RadioButtonDefaults.colors(
+                        selectedColor = AppTheme.colors.primaryIconColor,
+                        unselectedColor = AppTheme.colors.secondaryIconColor
+                    )
                 )
                 Image(
                     modifier = Modifier
@@ -111,12 +124,13 @@ fun SettingsViewDisplay(
                 )
                 Spacer(modifier = Modifier.size(14.dp))
                 Column {
-                    Text(stringResource(id = R.string._6450), fontSize = 18.sp)
+                    Text(stringResource(id = R.string._6450), fontSize = 18.sp,color = AppTheme.colors.primaryTextColor)
                     Text(
                         stringResource(id = R.string.without_fabricators),
                         fontSize = 12.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
+                        color = AppTheme.colors.primaryTextColor
                     )
                 }
             }
@@ -125,9 +139,10 @@ fun SettingsViewDisplay(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(12.dp),
+            color = AppTheme.colors.primaryTextColor,
             text = stringResource(id = R.string.sacu_cost_details)
         )
-        Divider(color = MaterialTheme.colorScheme.primary, thickness = 1.dp)
+        Divider(color = AppTheme.colors.primaryTextColor, thickness = 1.dp)
     }
 }
 

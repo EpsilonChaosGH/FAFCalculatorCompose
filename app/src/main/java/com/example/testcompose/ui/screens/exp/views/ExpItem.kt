@@ -29,6 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.testcompose.R
 import com.example.testcompose.ui.screens.exp.models.ExpState
 import com.example.testcompose.ui.navigation.Route.MAIN_ROUTE
+import com.example.testcompose.ui.theme.AppTheme
 import com.example.testcompose.ui.theme.GrayG
 import com.example.testcompose.ui.theme.ToxicGreen
 
@@ -48,7 +49,8 @@ fun ExpItem(exp: ExpState, navController: NavController, onMassCostClicked: (Int
         shape = RoundedCornerShape(5.dp),
         elevation = CardDefaults.cardElevation(5.dp)
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.background(AppTheme.colors.secondaryBackground)) {
             Image(
                 painter = painterResource(id = exp.iconResId),
                 contentDescription = stringResource(id = exp.titleResId),
@@ -70,7 +72,7 @@ fun ExpItem(exp: ExpState, navController: NavController, onMassCostClicked: (Int
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .background(GrayG)
+                    .background(AppTheme.colors.secondaryBackground)
             ) {
                 Image(
                     painter = painterResource(R.drawable.mass_icon),

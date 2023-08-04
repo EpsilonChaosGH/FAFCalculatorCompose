@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">TestCompose</string>
-
+    <string name="app_name">FAF Calculator Compose</string>
 
     <string name="mass">MASS</string>
     <string name="mass_cost">MASS COST</string>
